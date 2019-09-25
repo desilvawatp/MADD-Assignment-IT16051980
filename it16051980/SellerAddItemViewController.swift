@@ -28,6 +28,7 @@ class SellerAddItemViewController: UIViewController, UIImagePickerControllerDele
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             img.contentMode = .scaleAspectFit
             img.image = image
+
         }
         
         dismiss(animated: true, completion: nil)
@@ -39,6 +40,10 @@ class SellerAddItemViewController: UIViewController, UIImagePickerControllerDele
     
     // get all inputs.
     @IBAction func onAddItemBtnClick(_ sender: Any) {
+        let aName = name.text
+        let aPrice = price.text
+        let aDescription = disc.text
+        let aImgData = img.image?.pngData()
         
     }
     

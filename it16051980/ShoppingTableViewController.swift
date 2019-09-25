@@ -10,7 +10,7 @@ import UIKit
 class ShoppingTableViewController:  UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var table: UITableView!
-    var data: Array<ShoppingItem> = [
+    var shoppingData: Array<ShoppingItem> = [
         ShoppingItem(name: "Hair Dryer", price: 8500.0, description: "Philips Hair Dryer", imageURL: "https://3.bp.blogspot.com/-VsT-CRJvpXI/WySx0fv9uQI/AAAAAAAABKM/r07bEGg6TiYnSffYFiujar2-0TIFJNA2gCLcBGAs/s400/www.png"),
         ShoppingItem(name: "Hand Bag", price: 1250.0, description: "Cotton Woven", imageURL: ""),
         ShoppingItem(name: "Water Bottle", price: 500.0, description: "Glass, Shatter proof", imageURL: "")
@@ -24,30 +24,30 @@ class ShoppingTableViewController:  UIViewController, UITableViewDelegate, UITab
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return shoppingData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingItemTableCell", for: indexPath) as! ShoppingItemTableCell
-        let item = data[indexPath.row]
+        let item = shoppingData[indexPath.row]
         
         cell.name?.text = item.name
         cell.price?.text = String(item.price)
         cell.disc?.text = item.description
-        cell.img.download(from: item.imageURL)
+        cell.img.download(from: item.imageURL!)
         cell.accessoryType = .disclosureIndicator
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selected = data[indexPath.row]
+        self.selected = shoppingData[indexPath.row]
         performSegue(withIdentifier: "showSingleShoppingItem", sender: self)
     }
     
     // send object to next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "ShoppingItemViewController") {
+        if (segue.destination is ShoppingItemViewController) {
             let svc = segue.destination as! ShoppingItemViewController
             svc.shoppingItem = self.selected
         }
@@ -61,6 +61,38 @@ class ShoppingTableViewController:  UIViewController, UITableViewDelegate, UITab
         
         table.dataSource = self
         table.delegate = self
+        getShoppingItemList()
+    }
+    
+    func getShoppingItemList() {
+        let url = URL(string: "http://localhost:3000/items/all")
+        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            guard let data = data else { print(error); return }
+            
+            do {
+                let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! Array<AnyObject>
+                var items: Array<ShoppingItem> = []
+                
+                for elem in jsonData {
+                    items.append(
+                        ShoppingItem(
+                            name: elem.object(forKey: "name") as! String,
+                            price: elem.object(forKey: "price") as! Float,
+                            description: elem.object(forKey: "description") as! String,
+                            imageURL: elem.object(forKey: "imageURL") as! String
+                        )
+                    )
+                }
+                
+                self.shoppingData = items
+                self.table.reloadData()
+            } catch {
+                error.localizedDescription
+            }
+            
+        }
+        task.resume()
+
     }
 }
 

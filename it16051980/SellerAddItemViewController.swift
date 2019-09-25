@@ -44,8 +44,17 @@ class SellerAddItemViewController: UIViewController, UIImagePickerControllerDele
         let aPrice = price.text
         let aDescription = disc.text
         let aImgData = img.image?.pngData()
+     
+        var item = ShoppingItem(name: aName!, price: Float(aPrice!)!, description: aDescription!, imageData: aImgData!)
         
     }
+    
+    
+    // logout.
+    @IBAction func onSellerCancelBtnClick(_ sender: Any) {
+        performSegue(withIdentifier: "logOutSeller", sender: self)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

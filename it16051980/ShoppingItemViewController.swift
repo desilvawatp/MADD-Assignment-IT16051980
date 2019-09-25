@@ -31,7 +31,7 @@ class ShoppingItemViewController: UIViewController {
             name.text = self.shoppingItem?.name
             price.text = self.shoppingItem?.price.description
             disc.text = self.shoppingItem?.description
-            img.download(from: self.shoppingItem!.imageURL)
+            img.download(from: self.shoppingItem!.imageURL!)
         }
     }
 }

@@ -9,19 +9,26 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var sellerSwitch: UISwitch!
+    
     // Show the registration page
-    @IBAction func onRegBtnClick(_ sender: Any) {
+    @IBAction func onRegBtnInLoginScreenClick(_ sender: Any) {
         performSegue(withIdentifier: "showRegistration", sender: self)
     }
     
     // Show the login page
-    @IBAction func onLoginBtnClick(_ sender: Any) {
+    @IBAction func onLoginBtnInRegScreenClick(_ sender: Any) {
         performSegue(withIdentifier: "showLogin", sender: self)
     }
     
     // Login button in login page is clicked.
     @IBAction func onCorrectLoginBtnClick(_ sender: Any) {
-        performSegue(withIdentifier: "showAddItemForSeller", sender: self)
+        if (sellerSwitch.isOn) {
+            performSegue(withIdentifier: "showAddItemForSeller", sender: self)
+        }
+        else {
+            performSegue(withIdentifier: "showShoppingList", sender: self)
+        }
     }
     
     override func viewDidLoad() {

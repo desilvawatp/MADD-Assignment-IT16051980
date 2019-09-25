@@ -237,7 +237,6 @@
         <!--Shopping Table View Controller-->
         <scene sceneID="LV8-Pj-SdV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SCT-Eq-8y0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="shoppingItemList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OS4-AE-zrg" customClass="ShoppingTableViewController" customModule="it16051980" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q17-Tz-aOS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -249,6 +248,10 @@
                                     <navigationItem title="Buy!" id="mNb-uo-LIa">
                                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="iog-aR-fiQ">
                                             <color key="tintColor" red="1" green="0.39759059679999997" blue="0.35590485840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="onLogOutBtnClicked:" destination="OS4-AE-zrg" id="WZZ-ZI-b1g"/>
+                                                <segue destination="BYZ-38-t0r" kind="show" identifier="logMeOut" id="Zlh-kN-Ic6"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -257,7 +260,7 @@
                                 <rect key="frame" x="20" y="88" width="394" height="808"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shoppingItemTableCell" rowHeight="108" id="Yjk-NI-QiO" customClass="ShoppingItemTableCell" customModule="it16051980" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shoppingItemTableCell" rowHeight="108" id="Yjk-NI-QiO" customClass="ShoppingItemTableCell" customModule="it16051980" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="394" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yjk-NI-QiO" id="Jn3-6O-YOC">
@@ -328,11 +331,118 @@
                         <viewLayoutGuide key="safeArea" id="B9g-Hj-6Ul"/>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="zvO-QK-RmG" id="ndP-tx-PtW"/>
+                        <outlet property="table" destination="zvO-QK-RmG" id="ndP-tx-PtW"/>
+                        <segue destination="cJV-GK-vCP" kind="show" identifier="showSingleShoppingItem" id="Pxp-Rl-gcQ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SCT-Eq-8y0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1863.7681159420292" y="-325.44642857142856"/>
         </scene>
+        <!--Shopping Item View Controller-->
+        <scene sceneID="bHT-3U-IGw">
+            <objects>
+                <viewController storyboardIdentifier="shoppingItemMore" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cJV-GK-vCP" customClass="ShoppingItemViewController" customModule="it16051980" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VR7-zW-P1M">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5F-7H-5Hz">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Item" id="ZJs-eQ-ABh">
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="rfc-d8-gVe">
+                                            <color key="tintColor" red="1" green="0.61613451129999997" blue="0.24673353040000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <connections>
+                                                <action selector="onCancelBtnClick:" destination="cJV-GK-vCP" id="GhX-9Y-rbk"/>
+                                                <segue destination="OS4-AE-zrg" kind="show" identifier="showShoppingItems" id="07d-8g-hKH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DId-ch-UZv">
+                                <rect key="frame" x="20" y="108" width="374" height="82"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j7A-eS-N3v">
+                                <rect key="frame" x="20" y="210" width="374" height="374"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="374" id="zOR-Vp-pQf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOS-oe-GaF">
+                                <rect key="frame" x="20" y="604" width="374" height="111"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="111" id="dhX-7A-GfX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u68-eo-KjB">
+                                <rect key="frame" x="20" y="755" width="374" height="30"/>
+                                <color key="backgroundColor" red="0.084917031229999995" green="0.47925525899999999" blue="0.99923020600000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HFa-kd-IU7"/>
+                                </constraints>
+                                <state key="normal" title="Buy">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onBuyBtnClick:" destination="cJV-GK-vCP" eventType="touchUpInside" id="61q-Ly-8w8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-ad-tdo">
+                                <rect key="frame" x="20" y="563" width="374" height="21"/>
+                                <color key="backgroundColor" red="0.207011421319797" green="0.207011421319797" blue="0.207011421319797" alpha="0.25157855308219179" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="u68-eo-KjB" firstAttribute="leading" secondItem="Qjx-um-mLB" secondAttribute="leading" constant="20" id="4c6-Go-RpV"/>
+                            <constraint firstItem="X6B-ad-tdo" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="j7A-eS-N3v" secondAttribute="trailing" id="8Af-7c-2bM"/>
+                            <constraint firstItem="j7A-eS-N3v" firstAttribute="top" secondItem="DId-ch-UZv" secondAttribute="bottom" constant="20" id="BfR-AO-OL6"/>
+                            <constraint firstItem="Qjx-um-mLB" firstAttribute="trailing" secondItem="DId-ch-UZv" secondAttribute="trailing" constant="20" id="DqQ-Nc-8Ef"/>
+                            <constraint firstAttribute="trailing" secondItem="W5F-7H-5Hz" secondAttribute="trailing" id="GgU-CC-w8i"/>
+                            <constraint firstItem="j7A-eS-N3v" firstAttribute="leading" secondItem="Qjx-um-mLB" secondAttribute="leading" constant="20" id="JLe-uV-f9g"/>
+                            <constraint firstItem="W5F-7H-5Hz" firstAttribute="top" secondItem="Qjx-um-mLB" secondAttribute="top" id="MjC-c2-IIn"/>
+                            <constraint firstItem="eOS-oe-GaF" firstAttribute="leading" secondItem="Qjx-um-mLB" secondAttribute="leading" constant="20" id="N58-gm-h8g"/>
+                            <constraint firstItem="DId-ch-UZv" firstAttribute="leading" secondItem="Qjx-um-mLB" secondAttribute="leading" constant="20" id="StJ-Qf-Mag"/>
+                            <constraint firstItem="X6B-ad-tdo" firstAttribute="bottom" secondItem="j7A-eS-N3v" secondAttribute="bottom" id="WwW-k9-pbb"/>
+                            <constraint firstItem="u68-eo-KjB" firstAttribute="top" secondItem="eOS-oe-GaF" secondAttribute="bottom" constant="40" id="XlE-d7-rEg"/>
+                            <constraint firstItem="X6B-ad-tdo" firstAttribute="width" secondItem="j7A-eS-N3v" secondAttribute="width" id="a72-Pj-NgM"/>
+                            <constraint firstItem="Qjx-um-mLB" firstAttribute="trailing" secondItem="u68-eo-KjB" secondAttribute="trailing" constant="20" id="b9L-sH-6km"/>
+                            <constraint firstItem="Qjx-um-mLB" firstAttribute="trailing" secondItem="j7A-eS-N3v" secondAttribute="trailing" constant="20" id="cBi-kW-rPA"/>
+                            <constraint firstItem="DId-ch-UZv" firstAttribute="top" secondItem="W5F-7H-5Hz" secondAttribute="bottom" constant="20" id="hBp-k8-a68"/>
+                            <constraint firstItem="eOS-oe-GaF" firstAttribute="top" secondItem="j7A-eS-N3v" secondAttribute="bottom" constant="20" id="mFS-pg-lf2"/>
+                            <constraint firstItem="Qjx-um-mLB" firstAttribute="bottom" secondItem="u68-eo-KjB" secondAttribute="bottom" constant="77" id="rCS-qX-9SD"/>
+                            <constraint firstItem="Qjx-um-mLB" firstAttribute="trailing" secondItem="eOS-oe-GaF" secondAttribute="trailing" constant="20" id="toV-ww-bup"/>
+                            <constraint firstItem="X6B-ad-tdo" firstAttribute="leading" secondItem="Qjx-um-mLB" secondAttribute="leading" constant="20" id="uGn-OF-Y34"/>
+                            <constraint firstItem="W5F-7H-5Hz" firstAttribute="leading" secondItem="VR7-zW-P1M" secondAttribute="leading" id="yKm-Jr-11u"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qjx-um-mLB"/>
+                    </view>
+                    <connections>
+                        <outlet property="disc" destination="eOS-oe-GaF" id="1je-x8-v4G"/>
+                        <outlet property="img" destination="j7A-eS-N3v" id="ar3-ow-Fuk"/>
+                        <outlet property="name" destination="DId-ch-UZv" id="ef8-Q5-kKM"/>
+                        <outlet property="price" destination="X6B-ad-tdo" id="7IW-Up-8GF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9uu-iT-v2k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2776.811594202899" y="-325.44642857142856"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Pxp-Rl-gcQ"/>
+        <segue reference="07d-8g-hKH"/>
+        <segue reference="Zlh-kN-Ic6"/>
+    </inferredMetricsTieBreakers>
 </document>

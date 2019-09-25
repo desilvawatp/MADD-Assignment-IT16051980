@@ -9,13 +9,18 @@ import UIKit
 
 class ShoppingTableViewController:  UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var table: UITableView!
     var data: Array<ShoppingItem> = [
         ShoppingItem(name: "Hair Dryer", price: 8500.0, description: "Philips Hair Dryer", imageURL: "https://3.bp.blogspot.com/-VsT-CRJvpXI/WySx0fv9uQI/AAAAAAAABKM/r07bEGg6TiYnSffYFiujar2-0TIFJNA2gCLcBGAs/s400/www.png"),
         ShoppingItem(name: "Hand Bag", price: 1250.0, description: "Cotton Woven", imageURL: ""),
         ShoppingItem(name: "Water Bottle", price: 500.0, description: "Glass, Shatter proof", imageURL: "")
     ]
+    var selected: ShoppingItem? = nil
     
+    
+    @IBAction func onLogOutBtnClicked(_ sender: Any) {
+        performSegue(withIdentifier: "logMeOut", sender: self)
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,18 +40,31 @@ class ShoppingTableViewController:  UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selected = data[indexPath.row]
+        performSegue(withIdentifier: "showSingleShoppingItem", sender: self)
+    }
+    
+    // send object to next screen
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ShoppingItemViewController") {
+            let svc = segue.destination as! ShoppingItemViewController
+            svc.shoppingItem = self.selected
+        }
+        else if (segue.identifier == "logMeOut") {
+            // do nothing.
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        print("appeareD")
+        table.dataSource = self
+        table.delegate = self
     }
 }
 
-// embedding images.
+// download img from internet
 extension UIImageView {
     func download(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode

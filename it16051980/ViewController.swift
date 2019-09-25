@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     
     // Login button in login page is clicked.
     @IBAction func onCorrectLoginBtnClick(_ sender: Any) {
-        print("logging in...")
+        performSegue(withIdentifier: "showShoppingItems", sender: self)
     }
     
     override func viewDidLoad() {

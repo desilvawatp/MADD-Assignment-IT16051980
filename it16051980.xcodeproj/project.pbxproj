@@ -16,6 +16,7 @@
 		9CF1E7CA233BEF260000C32D /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1E7C9233BEF260000C32D /* ShoppingItem.swift */; };
 		9CF1E7CC233BF5310000C32D /* ShoppingItemTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1E7CB233BF5310000C32D /* ShoppingItemTableCell.swift */; };
 		9CF1E7CE233BFC5C0000C32D /* ShoppingItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1E7CD233BFC5C0000C32D /* ShoppingItemViewController.swift */; };
+		9CF1E7D2233C071A0000C32D /* SellerAddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1E7D1233C071A0000C32D /* SellerAddItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9CF1E7C9233BEF260000C32D /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
 		9CF1E7CB233BF5310000C32D /* ShoppingItemTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemTableCell.swift; sourceTree = "<group>"; };
 		9CF1E7CD233BFC5C0000C32D /* ShoppingItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemViewController.swift; sourceTree = "<group>"; };
+		9CF1E7D1233C071A0000C32D /* SellerAddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerAddItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				9CF1E7C9233BEF260000C32D /* ShoppingItem.swift */,
 				9CF1E7CB233BF5310000C32D /* ShoppingItemTableCell.swift */,
 				9CF1E7CD233BFC5C0000C32D /* ShoppingItemViewController.swift */,
+				9CF1E7D1233C071A0000C32D /* SellerAddItemViewController.swift */,
 			);
 			path = it16051980;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CF1E7D2233C071A0000C32D /* SellerAddItemViewController.swift in Sources */,
 				9CF1E7CE233BFC5C0000C32D /* ShoppingItemViewController.swift in Sources */,
 				9CF1E7CA233BEF260000C32D /* ShoppingItem.swift in Sources */,
 				9CF1E7CC233BF5310000C32D /* ShoppingItemTableCell.swift in Sources */,

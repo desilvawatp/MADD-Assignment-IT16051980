@@ -70,7 +70,6 @@
                                 </state>
                                 <connections>
                                     <action selector="onCorrectLoginBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MgS-60-WcY"/>
-                                    <segue destination="wJp-AZ-Zfc" kind="show" identifier="showAddItemForSeller" id="K9v-PD-Uqk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="regInLoginPage" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3E-uG-Php">
@@ -110,8 +109,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="loginEmail" destination="pru-1x-xhr" id="hfi-PJ-hte"/>
+                        <outlet property="loginPass" destination="CsD-5u-Sqv" id="HgE-hB-gbh"/>
                         <outlet property="sellerSwitch" destination="h01-h2-yb7" id="uR3-Dc-hV2"/>
                         <segue destination="OS4-AE-zrg" kind="show" identifier="showShoppingList" id="nIx-mI-OhC"/>
+                        <segue destination="wJp-AZ-Zfc" kind="show" identifier="showAddItemForSeller" id="YXV-8J-AaR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -233,6 +235,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Evz-Zq-l66"/>
                     </view>
+                    <connections>
+                        <outlet property="regEmail" destination="7bN-pD-OW8" id="Hci-pv-O1s"/>
+                        <outlet property="regPass" destination="Qub-6n-RzC" id="Dij-fT-mBC"/>
+                        <outlet property="regPassConfirm" destination="cs4-CD-Nav" id="akA-1v-2E3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ykp-4u-Ysz" sceneMemberID="firstResponder"/>
             </objects>
@@ -562,7 +569,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="07d-8g-hKH"/>
-        <segue reference="Zlh-kN-Ic6"/>
+        <segue reference="nIx-mI-OhC"/>
+        <segue reference="QkY-2G-zMz"/>
     </inferredMetricsTieBreakers>
 </document>

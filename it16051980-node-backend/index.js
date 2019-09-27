@@ -1,5 +1,12 @@
+var bp = require('body-parser');
 var express = require('express');
 var app = express();
+
+app.use(bp());
+
+var users = {
+    "test@test.test": "test"
+};
 
 app.get('/items/all', (req, res, next) => {
     var items = [
@@ -11,6 +18,30 @@ app.get('/items/all', (req, res, next) => {
 
     res.send(items);
 });
+
+app.post('/items/', (req, res, next) => {
+	console.log(req);
+	res.send()
+})
+
+app.post('/user/login', (req, res, next) => {
+    var userSent = req.body;
+    var userHere = users[userSent.email]
+    console.log(userSent);
+    if (userHere!= undefined) {
+        if (userHere.password == userSent.password) {
+            res.send({success: "true"});
+        }
+    }
+    res.send({success: "true"});
+})
+
+app.post('/user/register', (req, res, next) => {
+    var user = req.body;
+    users[user.email] = users[user.password]
+    res.send()
+})
+
 
 app.listen(3000, () => {
     console.log('iOS App\'s backend is running!');
